@@ -2,7 +2,7 @@
 <html lane="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Amit ❤&rsquo;s Elana &mdash; Elana ❤&rsquo;s Amit</title>
+	<title>Amit ❤’s Elana</title>
 	<link href='http://fonts.googleapis.com/css?family=Stint+Ultra+Expanded' rel='stylesheet' type='text/css' />
 	<style type="text/css">
 	body {
@@ -21,6 +21,18 @@
 		margin: 0;
 	}
 	</style>
+
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var host = window.location.host;
+			var title = (host == 'amitloveselana.com')
+				? 'Amit ❤’s Elana'
+				: 'Elana ❤’s Amit';
+			$('h1').text(title);
+			$('title', document).text(title);
+		});
+	</script>
 </head>
 <body>
 	<h1>Amit ❤&rsquo;s Elana</h1>
