@@ -9,8 +9,7 @@
 	<script src="http://code.jquery.com/jquery.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var host = window.location.host;
-			var title = (host == 'amitloveselana.com')
+			var title = (Math.floor(Math.random() * 2))
 				? 'Amit ❤’s Elana'
 				: 'Elana ❤’s Amit';
 			$('header h1').text(title);
