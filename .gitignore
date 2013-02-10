@@ -1,1 +1,5 @@
 _site/
+node_modules/
+components/
+.sass-cache
+.DS_Store

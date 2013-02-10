@@ -1,0 +1,52 @@
+@mixin flipper($axis: x, $speed: .4s, $perspective: 1000px) {
+	position: relative;
+	@include perspective($perspective);
+
+	.front, .back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		@include transition(all $speed ease-in-out);
+		@include backface-visibility(hidden);
+		@include transform-style(preserve-3d);
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.front {
+		@if $axis == x {
+			@include rotateX(0deg);
+		} @else {
+			@include rotateY(0deg);
+		}
+	}
+	.back {
+		@if $axis == x {
+			@include rotateX(180deg);
+		} @else {
+			@include rotateY(180deg);
+		}
+	}
+
+	&.flipped {
+		.front {
+			@if $axis == x {
+				@include rotateX(180deg);
+			} @else {
+				@include rotateY(180deg);
+			}
+		}
+		.back {
+			@if $axis == x {
+				@include rotateX(360deg);
+			} @else {
+				@include rotateY(360deg);
+			}
+		}
+	}
+}

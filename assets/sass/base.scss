@@ -1,0 +1,30 @@
+body {
+	padding: 50px;
+	background-color: #ddd;
+	background-image: url('../images/texture.png');
+	background-repeat: repeat;
+}
+
+.hide {
+	display: none;
+}
+
+.card {
+	@include flipper;
+
+	width: 730px;
+	height: 465px;
+	margin: 0 auto;
+
+	.front, .back {
+		@include border-radius(5px);
+		@include box-shadow(0 5px 15px rgba(0,0,0,0.5));
+	}
+
+	.front {
+		background: url('../images/card-front.png') no-repeat center center transparent;
+	}
+	.back {
+		background: url('../images/card-back.png') no-repeat center center transparent;
+	}
+}

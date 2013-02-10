@@ -1,2 +1,3 @@
 permalink: /:year/:month/:day/:title
 pygments: true
+exclude: [components, node_modules, component.json, Gruntfile.js, config.rb]
