@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			assets: {
-				files: 'assets/stylesheets/**/*',
+				files: 'assets/sass/**/*',
 				tasks: ['compass']
 			}
 		}
