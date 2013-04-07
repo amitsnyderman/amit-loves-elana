@@ -1,0 +1,13 @@
+{
+	"name": "amit-loves-elana",
+	"description": "",
+	"author": "",
+	"devDependencies": {
+		"grunt": "~0.4",
+		"bower": "*",
+		"grunt-contrib-watch": "*",
+		"grunt-contrib-compass": "*",
+		"grunt-bower-task": "*",
+		"grunt-jekyll": "*"
+	}
+}
