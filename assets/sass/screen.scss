@@ -4,15 +4,15 @@
 @import "config";
 
 body {
-	background-color: #ddd;
+	background-color: $green;
 	background-image: image-url('texture.png');
 	background-repeat: repeat;
 
 	font-family: "museo-1","museo-2",serif;
 	font-style: normal;
-	font-weight: 100;
+	font-weight: 300;
 	font-size: 125%;
-	line-height: 1.6em;
+	line-height: 1.3em;
 
 	@include at-breakpoint($breakpoint-medium) {
 		font-size: 137.5%;
@@ -35,3 +35,28 @@ section {
 #lodging {}
 #explore {}
 #registry {}
+
+a {
+	color: $pink;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 1.1em;
+}
+
+h2 {
+	font-weight: 700;
+	margin: 1em 0 .5em;
+}
+
+dl {}
+dt {
+	margin-top: .5em;
+	font-weight: 500;
+}

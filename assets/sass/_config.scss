@@ -1,9 +1,22 @@
+// Grids
+
 $total-columns: 12;
 $column-width: 4em;
 $gutter-width: 1em;
 $grid-padding: $gutter-width;
 
-$base-font-size: 16px;
+// Breakpoint
 
 $breakpoint-large: 50em;
 $breakpoint-medium: 37.5em;
+
+// Type
+
+$base-font-size: 16px;
+
+// Colors
+// @see http://akulakreative.com/wp-content/uploads/2012/07/AkulaKreative_PaperSourceColorGuide_2012.pdf
+
+$pink: rgba(222, 93, 148, 1); // #DE5D94
+$orange: rgba(255, 169, 110, 1); // #FFA96E
+$green: rgba(225, 236, 113, 1); // #E1EC71
