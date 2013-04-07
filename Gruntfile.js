@@ -5,7 +5,13 @@ module.exports = function(grunt) {
 		compass: {
 			dist: {
 				options: {
-					config: './config.rb'
+					require: ['susy'],
+					sassDir: "assets/sass",
+					cssDir: "assets/stylesheets",
+					imagesDir: "assets/images",
+					javascriptsDir: "assets/scripts",
+					outputStyle: 'compressed',
+					noLineComments: false
 				}
 			}
 		},
