@@ -7,11 +7,31 @@ body {
 	background-color: #ddd;
 	background-image: image-url('texture.png');
 	background-repeat: repeat;
+
+	font-family: "museo-1","museo-2",serif;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 125%;
+	line-height: 1.6em;
+
+	@include at-breakpoint($breakpoint-medium) {
+		font-size: 137.5%;
+	}
+
+	@include at-breakpoint($breakpoint-large) {
+		font-size: 150%;
+	}
 }
 
+
 .container { @include container; }
+
+section {
+	padding: 0.75em 0;
+}
 
 #ceremony {}
 #events {}
 #lodging {}
 #explore {}
+#registry {}
