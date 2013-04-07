@@ -79,3 +79,7 @@ li { margin-bottom: .5em; }
 		@include isolate-grid(4, 12);
 	}
 }
+
+.typekit-badge {
+	display: none !important;
+}
