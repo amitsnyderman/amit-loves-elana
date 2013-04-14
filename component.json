@@ -3,7 +3,8 @@
 	"version": "0.0.0",
 	"dependencies": {
 		"jquery": "latest",
-		"requirejs": "latest"
+		"requirejs": "latest",
+		"requirejs-plugins": "latest"
 	},
 	"exportsOverride": {
 		"jquery": {
@@ -11,6 +12,9 @@
 		},
 		"requirejs": {
 			"scripts": "require.js"
+		},
+		"requirejs-plugins": {
+			"scripts": "src/async.js"
 		}
 	}
 }

@@ -1,10 +1,11 @@
 require.config({
 	paths: {
-		jquery: 'jquery/jquery'
+		jquery: 'jquery/jquery',
+		async: 'requirejs-plugins/async'
 	}
 });
- 
-require(['jquery'], function($) {
+
+require(['jquery'], function($, maps) {
 	var title = (Math.floor(Math.random() * 2))
 		? 'Amit ❤’s Elana'
 		: 'Elana ❤’s Amit';
