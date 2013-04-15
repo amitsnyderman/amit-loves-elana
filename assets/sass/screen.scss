@@ -3,9 +3,17 @@
 @import "susy";
 @import "config";
 
+@mixin washi($image) {
+	margin-top: -1.5em;
+	padding-top: 3em;
+	background-image: image-url($image);
+	background-repeat: no-repeat;
+	background-position: top center;
+}
+
 body {
-	background-color: $green;
-	background-image: image-url('herring-floor.svg');
+	background-color: $gray;
+	background-image: image-url('texture.png');
 	background-repeat: repeat;
 
 	font-family: "museo-1","museo-2",serif;
@@ -26,13 +34,29 @@ body {
 .container { @include container; }
 
 section {
+	margin: 2em;
 	padding: 0.75em 0;
+	background-color: $white;
+	@include border-radius(2px);
+	@include box-shadow(0 2px 5px rgba(0, 0, 0, .6));
+
+	header {
+		@include washi("washi/short-blue-stripe.png");
+	}
 }
 
 #ceremony {}
-#events {}
+#events {
+	header {
+		@include washi("washi/long-gold-stripe.png");
+	}
+}
 #lodging {}
-#explore {}
+#explore {
+	header {
+		@include washi("washi/long-black-stripe.png");
+	}
+}
 #registry {}
 
 em { font-style: italic; }
