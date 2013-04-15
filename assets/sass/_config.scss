@@ -5,11 +5,6 @@ $column-width: 4em;
 $gutter-width: 1em;
 $grid-padding: $gutter-width;
 
-// Breakpoint
-
-$breakpoint-large: 70em;
-$breakpoint-medium: 45em 70em;
-$breakpoint-small: 45em;
 
 // Type
 
@@ -19,7 +14,8 @@ $base-font-size: 16px;
 // @see http://akulakreative.com/wp-content/uploads/2012/07/AkulaKreative_PaperSourceColorGuide_2012.pdf
 
 $white: rgb(255, 255, 255);
-$gray: rgba(0, 0, 0, .2);
+$black: rgb(0, 0, 0);
+$gray: rgba(0, 0, 0, .5);
 $pink: rgb(222, 93, 148); // #DE5D94
 $orange: rgb(255, 169, 110); // #FFA96E
 $green: rgb(225, 236, 113); // #E1EC71

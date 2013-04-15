@@ -4,64 +4,98 @@
 @import "config";
 
 @mixin washi($image) {
-	margin-top: -1.5em;
-	padding-top: 3em;
+	&:after {
+		position: absolute;
+		top: -1em;
+		display: block;
+		height: 60px;
+		width: 100%;
+		background-image: image-url($image);
+		background-repeat: no-repeat;
+		background-position: top center;
+		content: "";
+	}
+
+	> .container {
+		padding-top: 3em;
+	}
+}
+
+@mixin washi-banner($image) {
 	background-image: image-url($image);
 	background-repeat: no-repeat;
-	background-position: top center;
+	background-position: center center;
+
+	font-size: 1.1em;
+	font-weight: 500;
+	line-height: 1.3em;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+
+	> .container {
+		background-color: transparent;
+		border: none;
+		box-shadow: none;
+	}
+
+	a { color: lighten($black, 40%); }
 }
 
 body {
-	background-color: $gray;
+	padding: 3em;
+	background-color: lighten($gray, 80%);
 	background-image: image-url('texture.png');
 	background-repeat: repeat;
 
+	color: lighten($black, 40%);
 	font-family: "museo-1","museo-2",serif;
 	font-style: normal;
 	font-weight: 300;
 	font-size: 125%;
 	line-height: 1.3em;
-
-	@include at-breakpoint($breakpoint-medium) {
-		font-size: 125%;
-	}
-
-	@include at-breakpoint($breakpoint-large) {
-		font-size: 125%;
-	}
 }
 
-.container { @include container; }
+// Layout
+
+body > .container {
+	@include container;
+
+	@include at-breakpoint(55em) {
+		#ceremony { @include span-columns(4, 12); }
+		#directions { @include span-columns(8 omega, 12); }
+		#rsvp { @include span-columns(12 omega, 12); }
+		#events { @include span-columns(4, 12); }
+		#lodging { @include span-columns(8 omega, 12); }
+		#registry { @include span-columns(4, 12); }
+		#explore { @include span-columns(8 omega, 12); }
+	}
+}
 
 section {
-	margin: 2em;
-	padding: 0.75em 0;
-	background-color: $white;
-	@include border-radius(2px);
-	@include box-shadow(0 2px 5px rgba(0, 0, 0, .6));
+	position: relative;
+	margin: 0 0 3em;
+	text-align: center;
 
-	header {
-		@include washi("washi/short-blue-stripe.png");
+	> .container {
+		padding: 1em;
+		background-color: $white;
+		@include border-radius(2px);
+		@include box-shadow(0 2px 5px rgba(0, 0, 0, .6));
+	}
+
+	@include at-breakpoint(55em) {
+		margin: 0 0 2em;
 	}
 }
 
-#ceremony {}
-#events {
-	header {
-		@include washi("washi/long-gold-stripe.png");
-	}
-}
-#lodging {}
-#explore {
-	header {
-		@include washi("washi/long-black-stripe.png");
-	}
-}
-#registry {}
+#ceremony { @include washi("washi/short-black-stripe.png"); }
+#directions { @include washi("washi/short-gold-fatstripe.png"); }
+#events { @include washi("washi/short-green-stripe.png"); }
+#lodging { @include washi("washi/short-gold-stripe.png"); }
+#registry { @include washi("washi/short-black-stripe.png"); }
 
-em { font-style: italic; }
-strong { font-weight: 500; }
-address { display: inline; }
+#rsvp { @include washi-banner("washi/bg-blue-stripe.png"); }
+#explore { @include washi-banner("washi/bg-blue-stripe.png"); }
 
 a {
 	color: $pink;
@@ -73,41 +107,34 @@ a {
 }
 
 h1 {
-	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 1.1em;
+	margin: 0 0 .8em;
+
+	&.sep {
+		border-top: 1px dotted lighten($black, 80%);
+		padding-top: .8em;
+	}
+}
+
+h2 {
+	font-weight: 500;
 	font-size: 1.1em;
 	margin: 0 0 .8em;
 }
 
-h2 {
-	font-weight: 700;
-	margin: 1em 0 .8em;
+h3 {
+	font-weight: 500;
+	margin: 0;
 }
 
 p { margin-bottom: .8em; }
 li { margin-bottom: .8em; }
+em { font-style: italic; }
+strong { font-weight: 500; }
 
-@include at-breakpoint($breakpoint-medium) {
-	ul {
-		@include clearfix;
-	}
-	li {
-		@include isolate-grid(6, 12);
-	}
-}
-
-@include at-breakpoint($breakpoint-large) {
-	ul {
-		@include clearfix;
-	}
-	li {
-		@include isolate-grid(4, 12);
-	}
-}
-
-p.invite {
-	margin: 0;
-	font-size: 1.5em;
-	line-height: 1.3em;
-}
+.description { font-size: .9em; }
 
 .typekit-badge { display: none !important; }
