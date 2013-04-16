@@ -36,9 +36,14 @@
 		background-color: transparent;
 		border: none;
 		box-shadow: none;
+		padding: .5em;
 	}
 
 	a { color: lighten($black, 40%); }
+	a:hover {
+		color: $pink;
+		text-decoration: none;
+	}
 }
 
 body {
@@ -60,14 +65,19 @@ body {
 body > .container {
 	@include container;
 
-	@include at-breakpoint(55em) {
+	@include at-breakpoint(12) {
 		#ceremony { @include span-columns(4, 12); }
 		#directions { @include span-columns(8 omega, 12); }
 		#rsvp { @include span-columns(12 omega, 12); }
 		#events { @include span-columns(4, 12); }
 		#lodging { @include span-columns(8 omega, 12); }
-		#registry { @include span-columns(4, 12); }
-		#explore { @include span-columns(8 omega, 12); }
+		#explore { @include span-columns(4, 12); }
+		#registry { @include span-columns(8 omega, 12); }
+
+		#ceremony > .container,
+		#directions > .container {
+			min-height: 13.5em;
+		}
 	}
 }
 
@@ -83,19 +93,19 @@ section {
 		@include box-shadow(0 2px 5px rgba(0, 0, 0, .6));
 	}
 
-	@include at-breakpoint(55em) {
+	@include at-breakpoint(12) {
 		margin: 0 0 2em;
 	}
 }
 
-#ceremony { @include washi("washi/short-black-stripe.png"); }
-#directions { @include washi("washi/short-gold-fatstripe.png"); }
+#ceremony { @include washi("washi/short-gold-fatstripe.png"); }
+#directions { @include washi("washi/short-black-stripe.png"); }
 #events { @include washi("washi/short-green-stripe.png"); }
 #lodging { @include washi("washi/short-gold-stripe.png"); }
-#registry { @include washi("washi/short-black-stripe.png"); }
+#explore { @include washi("washi/short-black-stripe.png"); }
 
 #rsvp { @include washi-banner("washi/bg-blue-stripe.png"); }
-#explore { @include washi-banner("washi/bg-blue-stripe.png"); }
+#registry { @include washi-banner("washi/bg-blue-stripe.png"); }
 
 a {
 	color: $pink;
@@ -115,6 +125,7 @@ h1 {
 
 	&.sep {
 		border-top: 1px dotted lighten($black, 80%);
+		margin-top: .8em;
 		padding-top: .8em;
 	}
 }
