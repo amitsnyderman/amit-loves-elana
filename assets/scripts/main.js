@@ -5,7 +5,7 @@ require.config({
 	}
 });
 
-require(['jquery'], function($, maps) {
+require(['jquery'], function($) {
 	var title = (Math.floor(Math.random() * 2))
 		? 'Amit ❤’s Elana'
 		: 'Elana ❤’s Amit';

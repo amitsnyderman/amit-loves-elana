@@ -1,8 +1,15 @@
 ---
 layout: default
+class: map
 ---
 
-<section>
+<div id="map-container">
+	<div id="map"></div>
+</div>
+
+<div class="container explore">
+
+<section id="explore">
 	<div class="container">
 		<h1>Brooklyn</h1>
 
@@ -99,3 +106,12 @@ layout: default
 		</ul>
 	</div>
 </section>
+
+</div>
+
+<script>
+	require(['explore'], function(Explore) {
+		var app = new Explore();
+		app.run();
+	})
+</script>

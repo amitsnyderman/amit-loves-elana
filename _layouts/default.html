@@ -6,14 +6,12 @@
 
 	<script type="text/javascript" src="//use.typekit.net/flg6yjf.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<script data-main="/assets/scripts/main" src="/assets/scripts/requirejs/require.js"></script>
 
 	<link href="/assets/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 </head>
-<body>
-	<div class="container">{{ content }}</div>
-
+<body class="{{ page.class }}">
+	{{ content }}
 	{% include analytics.html %}
-
-	<script data-main="/assets/scripts/main" src="/assets/scripts/requirejs/require.js"></script>
 </body>
 </html>
