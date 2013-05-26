@@ -68,10 +68,11 @@ body > .container {
 	@include at-breakpoint(12) {
 		#ceremony { @include span-columns(4, 12); }
 		#directions { @include span-columns(8 omega, 12); }
-		#rsvp { @include span-columns(12 omega, 12); }
+		// #rsvp { @include span-columns(12 omega, 12); }
 		#events { @include span-columns(4, 12); }
-		#lodging { @include span-columns(8 omega, 12); }
-		#explore { @include span-columns(4, 12); }
+		// #lodging { @include span-columns(8 omega, 12); }
+		// #explore { @include span-columns(4, 12); }
+		#explore { @include span-columns(8 omega, 12); }
 		#registry { @include span-columns(8 omega, 12); }
 
 		#ceremony > .container,
