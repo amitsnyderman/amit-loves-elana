@@ -50,8 +50,14 @@ define(['jquery', 'gmaps'], function($, maps) {
 			this.transitLayer = new maps.TransitLayer();
 			this.transitLayer.setMap(this.map);
 
+			this.infoWindow = new google.maps.InfoWindow();
+
 			this.$locations.find('li').on('click', $.proxy(this.getDirections, this));
 			this.$travelMode.on('change', $.proxy(this.getDirectionsForTravelModel, this));
+
+			maps.event.addListener(map, 'click', function() {
+				self.infoWindow.close();
+			});
 
 			var here = new google.maps.Marker({
 				map: this.map,
@@ -60,27 +66,63 @@ define(['jquery', 'gmaps'], function($, maps) {
 			});
 
 			// this.getAllPlaces();
+			this.markAllPlaces();
+		},
+
+		markAllPlaces: function() {
+			var self = this;
+			this.$locations.find('li > strong').each(function() {
+				self.showMarker({
+					currentTarget: $(this)
+				});
+			});
 		},
 
 		showMarker: function(ev) {
 			var $target = $(ev.currentTarget),
 				$address = $target.siblings('address');
 
-			var request = {
-				'address': $address.text()
-			};
+			if ($address.data('lat') && $address.data('lng')) {
+				this.createMarker(
+					$target.text(),
+					$address.text(),
+					new maps.LatLng($address.data('lat'), $address.data('lng'))
+				);
+			} else {
+				var request = {
+					'address': $address.text()
+				};
 
-			this.geocoder.geocode(request, $.proxy(this.handleGeocode, this));
+				this.geocoder.geocode(request, $.proxy(function(results, status) {
+					this.createMarker(
+						$target.text(),
+						$address.text(),
+						this.handleGeocode(results, status)
+					);
+				}, this));
+			}
+		},
+
+		createMarker: function(title, description, location) {
+			var self = this;
+			var content = '<div class="info-window"><h4>' + title + '</h4><p>' + description + '</p></div>';
+			var marker = new google.maps.Marker({
+				map: this.map,
+				position: location
+			});
+
+			this.map.setCenter(location);
+
+			maps.event.addListener(marker, 'click', function() {
+				self.infoWindow.setContent(content);
+				self.infoWindow.open(self.map, marker);
+			});
 		},
 
 		handleGeocode: function(results, status) {
 			if (status == maps.GeocoderStatus.OK) {
 				var place = results[0];
-				this.map.setCenter(place.geometry.location);
-				var marker = new google.maps.Marker({
-					map: this.map,
-					position: place.geometry.location
-				});
+				return place.geometry.location;
 			} else {
 				console.log(status);
 			}
@@ -115,10 +157,10 @@ define(['jquery', 'gmaps'], function($, maps) {
 
 		handleDirections: function(result, status) {
 			if (status == maps.DirectionsStatus.OK) {
-				console.log(result);
 				this.directionsDisplay.setDirections(result);
 				this.$body.addClass('has-directions');
 			} else {
+				alert('Oops, there was an error getting directions.');
 				console.log(status);
 			}
 		},
@@ -133,6 +175,8 @@ define(['jquery', 'gmaps'], function($, maps) {
 		},
 
 		getAllPlaces: function() {
+			var self = this;
+
 			this.$locations.find('li').each(function() {
 				var $el = $(this);
 				var $name = $el.find('strong');
